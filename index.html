@@ -6,6 +6,7 @@
 <title>For Susma ❤️</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -16,9 +17,73 @@ body {
     background: linear-gradient(135deg, #f7eee8, #ead9d2);
     font-family: "Segoe UI", Arial, sans-serif;
     color: #333;
+    overflow-x: hidden;
 }
 
-/* Opening screen */
+/* =====================================================
+   FALLING HEARTS
+===================================================== */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart-fall {
+    position: absolute;
+    top: -50px;
+    color: #ff69b4;
+    font-family: Arial, sans-serif;
+    opacity: 0;
+    animation: heartFall linear forwards;
+    filter: drop-shadow(0 2px 3px rgba(255, 105, 180, 0.25));
+}
+
+@keyframes heartFall {
+
+    0% {
+        transform:
+            translateY(-50px)
+            translateX(0)
+            rotate(0deg)
+            scale(0.8);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.65;
+    }
+
+    50% {
+        transform:
+            translateY(50vh)
+            translateX(25px)
+            rotate(180deg)
+            scale(1);
+    }
+
+    90% {
+        opacity: 0.55;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(-25px)
+            rotate(360deg)
+            scale(0.85);
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   OPENING SCREEN
+===================================================== */
+
 #opening {
     min-height: 100vh;
     display: flex;
@@ -26,20 +91,35 @@ body {
     align-items: center;
     text-align: center;
     padding: 25px;
+    position: relative;
+    z-index: 2;
 }
 
 .opening-card {
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.94);
     padding: 55px 35px;
     max-width: 520px;
     width: 100%;
-    border-radius: 18px;
+    border-radius: 20px;
     box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.8);
 }
 
 .opening-card .heart {
     font-size: 48px;
     margin-bottom: 15px;
+    animation: heartbeat 1.8s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
 }
 
 .opening-card h1 {
@@ -54,6 +134,7 @@ body {
     color: #777;
     font-size: 17px;
     margin: 12px 0 30px;
+    line-height: 1.7;
 }
 
 .open-button {
@@ -72,10 +153,16 @@ body {
     transform: scale(1.05);
 }
 
-/* Letter */
+
+/* =====================================================
+   LETTER PAGE
+===================================================== */
+
 #letterPage {
     display: none;
     padding: 25px 15px 50px;
+    position: relative;
+    z-index: 2;
 }
 
 .notepad {
@@ -86,7 +173,14 @@ body {
     border-radius: 9px;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 2;
 }
+
+
+/* =====================================================
+   NOTEPAD TOP BAR
+===================================================== */
 
 .top-bar {
     height: 40px;
@@ -116,6 +210,11 @@ body {
     font-size: 15px;
     color: #444;
 }
+
+
+/* =====================================================
+   LETTER
+===================================================== */
 
 .letter {
     padding: 45px 55px 60px;
@@ -153,6 +252,11 @@ body {
     margin: 30px 0;
 }
 
+
+/* =====================================================
+   ENDING
+===================================================== */
+
 .ending {
     text-align: center;
     margin-top: 55px;
@@ -171,23 +275,33 @@ body {
     line-height: 1.8;
 }
 
-/* Fade in */
+
+/* =====================================================
+   FADE IN
+===================================================== */
+
 .fade {
     animation: fadeIn 1.5s ease;
 }
 
 @keyframes fadeIn {
+
     from {
         opacity: 0;
         transform: translateY(15px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Music indicator */
+
+/* =====================================================
+   MUSIC INDICATOR
+===================================================== */
+
 .music-playing {
     position: fixed;
     right: 18px;
@@ -201,7 +315,11 @@ body {
     z-index: 20;
 }
 
-/* Mobile */
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
 @media (max-width: 600px) {
 
     #letterPage {
@@ -229,13 +347,34 @@ body {
     .top-bar span {
         margin-right: 14px;
     }
+
+    .opening-card {
+        padding: 45px 25px;
+    }
+
+    .opening-card h1 {
+        font-size: 29px;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= OPENING SCREEN ================= -->
+
+<!-- =====================================================
+     FALLING HEART CONTAINER
+===================================================== -->
+
+<div class="hearts"></div>
+
+
+<!-- =====================================================
+     OPENING SCREEN
+===================================================== -->
 
 <div id="opening">
 
@@ -260,7 +399,9 @@ body {
 </div>
 
 
-<!-- ================= LETTER ================= -->
+<!-- =====================================================
+     LETTER
+===================================================== -->
 
 <div id="letterPage">
 
@@ -275,15 +416,18 @@ body {
         </div>
 
         <div class="title-bar">
+
             <div class="title">
                 Susma - Birthday Letter ❤️
             </div>
 
             <div>❤️</div>
+
         </div>
 
 
         <div class="letter">
+
 
             <div class="opening">
 
@@ -347,10 +491,12 @@ body {
                 about that was enough to give me butterflies.
             </p>
 
+
             <div class="quote">
                 Maybe in seven lifetimes, you would still be the only person
                 whom I could love this much. ❤️
             </div>
+
 
             <p>
                 Maybe I didn't fall for your anger or your hard voice. I fell for the
@@ -377,10 +523,12 @@ body {
                 that moment was.
             </p>
 
+
             <p class="quote">
                 It felt like someone had taken a knife and pierced straight through
                 my heart.
             </p>
+
 
             <p>
                 It was so painful that I wouldn't wish that kind of pain upon anyone. 💔
@@ -390,9 +538,11 @@ body {
                 Still, when I went home, one thought kept coming back to me:
             </p>
 
+
             <div class="quote">
                 "How can I lose someone whom I love this much?"
             </div>
+
 
             <p>
                 That's why I chose to stay with you.
@@ -528,6 +678,10 @@ body {
             </p>
 
 
+            <!-- =====================================================
+                 ENDING
+            ===================================================== -->
+
             <div class="ending">
 
                 <div class="big">
@@ -595,15 +749,24 @@ body {
             </div>
 
         </div>
+
     </div>
 
 </div>
 
 
-<!-- Music -->
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
 <audio id="birthdayMusic" loop preload="auto">
-    <source src="https://drive.google.com/uc?export=download&id=12DVAZ3wJnuHzKjZw-4yVpjRYskPP_fkD" type="audio/mpeg">
+    <source
+        src="https://drive.google.com/uc?export=download&id=12DVAZ3wJnuHzKjZw-4yVpjRYskPP_fkD"
+        type="audio/mpeg">
 </audio>
+
+
+<!-- MUSIC STATUS -->
 
 <div id="musicStatus" class="music-playing" style="display:none;">
     🎵 Playing for you ❤️
@@ -612,34 +775,183 @@ body {
 
 <script>
 
+
+/* =====================================================
+   OPEN LETTER
+===================================================== */
+
 function openLetter() {
 
-    const opening = document.getElementById("opening");
-    const letterPage = document.getElementById("letterPage");
-    const music = document.getElementById("birthdayMusic");
-    const musicStatus = document.getElementById("musicStatus");
+    const opening =
+        document.getElementById("opening");
+
+    const letterPage =
+        document.getElementById("letterPage");
+
+    const music =
+        document.getElementById("birthdayMusic");
+
+    const musicStatus =
+        document.getElementById("musicStatus");
+
 
     /* Hide opening screen */
+
     opening.style.display = "none";
 
+
     /* Show letter */
+
     letterPage.style.display = "block";
 
-    /* Start music from the same click */
+
+    /* Start music */
+
     music.play()
         .then(function() {
+
             musicStatus.style.display = "block";
+
         })
         .catch(function() {
+
             musicStatus.style.display = "none";
+
         });
 
-    /* Start at the top */
+
+    /* Start falling hearts */
+
+    startFallingHearts();
+
+
+    /* Start at top */
+
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
+
 }
+
+
+/* =====================================================
+   FALLING HEART GENERATOR
+===================================================== */
+
+function createHeart() {
+
+    const container =
+        document.querySelector(".hearts");
+
+    const heart =
+        document.createElement("div");
+
+
+    heart.classList.add("heart-fall");
+
+
+    /* Different heart shapes */
+
+    const hearts = [
+        "♥",
+        "❤",
+        "💕",
+        "♡"
+    ];
+
+    heart.innerHTML =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+
+    /* Random horizontal position */
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    /* Random size */
+
+    heart.style.fontSize =
+        (12 + Math.random() * 18) + "px";
+
+
+    /* Random pink shade */
+
+    const pinks = [
+        "#ff69b4",
+        "#ff85c1",
+        "#ff9acb",
+        "#ff5c9a",
+        "#f783ac",
+        "#ffb3d9"
+    ];
+
+    heart.style.color =
+        pinks[Math.floor(Math.random() * pinks.length)];
+
+
+    /* Random falling speed */
+
+    heart.style.animationDuration =
+        (6 + Math.random() * 7) + "s";
+
+
+    /* Random delay */
+
+    heart.style.animationDelay =
+        (Math.random() * 1.5) + "s";
+
+
+    /* Slight horizontal variation */
+
+    heart.style.marginLeft =
+        (Math.random() * 30 - 15) + "px";
+
+
+    container.appendChild(heart);
+
+
+    /* Remove after animation */
+
+    setTimeout(function() {
+
+        heart.remove();
+
+    }, 15000);
+
+}
+
+
+/* =====================================================
+   START HEARTS
+===================================================== */
+
+let heartInterval = null;
+
+function startFallingHearts() {
+
+    if (heartInterval !== null) {
+        return;
+    }
+
+
+    /* Create a few hearts immediately */
+
+    for (let i = 0; i < 12; i++) {
+        setTimeout(function() {
+            createHeart();
+        }, i * 250);
+    }
+
+
+    /* Continue creating hearts */
+
+    heartInterval =
+        setInterval(createHeart, 650);
+
+}
+
 
 </script>
 
