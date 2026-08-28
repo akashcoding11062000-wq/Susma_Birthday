@@ -3,111 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Susma ❤️</title>
 
 <style>
+
+/* =========================
+   BASIC PAGE
+========================= */
 
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f7eee8, #ead9d2);
+    background: linear-gradient(135deg, #f8eee9, #ead8d1);
     font-family: "Segoe UI", Arial, sans-serif;
     color: #333;
     overflow-x: hidden;
 }
 
-/* =====================================================
+
+/* =========================
    FALLING HEARTS
-===================================================== */
+========================= */
 
-.hearts {
+#heartContainer {
     position: fixed;
-    inset: 0;
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
-    z-index: 0;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.heart-fall {
+.falling-heart {
     position: absolute;
-    top: -50px;
-    color: #ff69b4;
+    top: -60px;
+    pointer-events: none;
     font-family: Arial, sans-serif;
-    opacity: 0;
-    animation: heartFall linear forwards;
-    filter: drop-shadow(0 2px 3px rgba(255, 105, 180, 0.25));
+    font-weight: bold;
+    opacity: 0.75;
+
+    animation-name: falling;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
 }
 
-@keyframes heartFall {
+@keyframes falling {
 
     0% {
-        transform:
-            translateY(-50px)
-            translateX(0)
-            rotate(0deg)
-            scale(0.8);
+        transform: translateY(0) translateX(0) rotate(0deg);
         opacity: 0;
     }
 
     10% {
-        opacity: 0.65;
+        opacity: 0.75;
     }
 
     50% {
-        transform:
-            translateY(50vh)
-            translateX(25px)
-            rotate(180deg)
-            scale(1);
+        transform: translateY(50vh) translateX(30px) rotate(180deg);
+        opacity: 0.7;
     }
 
     90% {
-        opacity: 0.55;
+        opacity: 0.6;
     }
 
     100% {
-        transform:
-            translateY(110vh)
-            translateX(-25px)
-            rotate(360deg)
-            scale(0.85);
+        transform: translateY(115vh) translateX(-30px) rotate(360deg);
         opacity: 0;
     }
 }
 
 
-/* =====================================================
+/* =========================
    OPENING SCREEN
-===================================================== */
+========================= */
 
 #opening {
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+
     padding: 25px;
+
     position: relative;
-    z-index: 2;
+    z-index: 5;
 }
 
 .opening-card {
-    background: rgba(255,255,255,0.94);
-    padding: 55px 35px;
-    max-width: 520px;
+
     width: 100%;
+    max-width: 520px;
+
+    padding: 55px 35px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.96);
+
     border-radius: 20px;
-    box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.15);
+
     border: 1px solid rgba(255,255,255,0.8);
 }
 
-.opening-card .heart {
-    font-size: 48px;
+.opening-heart {
+
+    font-size: 52px;
+
     margin-bottom: 15px;
+
     animation: heartbeat 1.8s infinite;
 }
 
@@ -123,237 +142,367 @@ body {
 }
 
 .opening-card h1 {
-    font-family: Georgia, serif;
-    font-weight: normal;
-    color: #8d3f55;
-    font-size: 34px;
+
     margin: 10px 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 34px;
+
+    font-weight: normal;
+
+    color: #8d3f55;
 }
 
 .opening-card p {
+
+    margin: 15px 0 32px;
+
     color: #777;
+
     font-size: 17px;
-    margin: 12px 0 30px;
+
     line-height: 1.7;
 }
 
 .open-button {
+
     border: none;
+
     background: #8d3f55;
+
     color: white;
-    padding: 15px 28px;
+
+    padding: 15px 30px;
+
     border-radius: 30px;
+
     font-size: 16px;
+
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(141,63,85,0.3);
-    transition: 0.3s;
+
+    box-shadow:
+        0 6px 18px rgba(141,63,85,0.3);
+
+    transition: all 0.3s ease;
 }
 
 .open-button:hover {
-    transform: scale(1.05);
+
+    transform: scale(1.06);
+
+    box-shadow:
+        0 8px 22px rgba(141,63,85,0.4);
 }
 
 
-/* =====================================================
+/* =========================
    LETTER PAGE
-===================================================== */
+========================= */
 
 #letterPage {
+
     display: none;
-    padding: 25px 15px 50px;
+
+    padding: 25px 15px 60px;
+
     position: relative;
-    z-index: 2;
+
+    z-index: 4;
 }
 
 .notepad {
+
+    width: 100%;
+
     max-width: 900px;
+
     margin: auto;
+
     background: #fffefb;
+
     border: 1px solid #d5d0ca;
+
     border-radius: 9px;
+
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.15);
+
     position: relative;
-    z-index: 2;
+
+    z-index: 4;
 }
 
 
-/* =====================================================
-   NOTEPAD TOP BAR
-===================================================== */
+/* =========================
+   NOTEPAD TOP MENU
+========================= */
 
 .top-bar {
+
     height: 40px;
+
     background: #f5f5f5;
+
     border-bottom: 1px solid #d5d5d5;
+
     display: flex;
+
     align-items: center;
+
     padding-left: 15px;
+
     font-size: 13px;
+
     color: #555;
 }
 
 .top-bar span {
+
     margin-right: 24px;
 }
 
+
+/* =========================
+   TITLE BAR
+========================= */
+
 .title-bar {
+
     background: #f8f5f1;
+
     border-bottom: 1px solid #ddd7d0;
+
     padding: 13px 18px;
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
 .title {
+
     font-size: 15px;
+
     color: #444;
 }
 
 
-/* =====================================================
-   LETTER
-===================================================== */
+/* =========================
+   LETTER CONTENT
+========================= */
 
 .letter {
+
     padding: 45px 55px 60px;
+
     line-height: 1.85;
+
     font-size: 17px;
+
+    position: relative;
+
+    z-index: 5;
 }
 
-.opening {
+.letter-opening {
+
     text-align: center;
+
     margin-bottom: 45px;
 }
 
-.opening h2 {
-    font-family: Georgia, serif;
-    font-size: 32px;
-    font-weight: normal;
-    color: #8d3f55;
+.letter-opening h2 {
+
     margin-bottom: 10px;
+
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+    font-weight: normal;
+
+    color: #8d3f55;
 }
 
-.opening p {
+.letter-opening p {
+
     color: #777;
+
     font-size: 15px;
 }
 
 .letter p {
+
     margin: 0 0 24px;
 }
 
+
+/* =========================
+   QUOTES
+========================= */
+
 .quote {
-    font-family: Georgia, serif;
-    font-size: 19px;
-    text-align: center;
-    color: #8d3f55;
+
     margin: 30px 0;
+
+    text-align: center;
+
+    font-family: Georgia, serif;
+
+    font-size: 19px;
+
+    color: #8d3f55;
 }
 
 
-/* =====================================================
+/* =========================
    ENDING
-===================================================== */
+========================= */
 
 .ending {
-    text-align: center;
+
     margin-top: 55px;
+
+    text-align: center;
+
     font-family: Georgia, serif;
 }
 
 .ending .big {
-    font-size: 28px;
-    color: #8d3f55;
+
     margin-bottom: 15px;
+
+    font-size: 28px;
+
+    color: #8d3f55;
 }
 
 .ending .small {
+
     font-size: 18px;
+
     color: #555;
+
     line-height: 1.8;
 }
 
 
-/* =====================================================
-   FADE IN
-===================================================== */
+/* =========================
+   PAGE FADE
+========================= */
 
 .fade {
+
     animation: fadeIn 1.5s ease;
 }
 
 @keyframes fadeIn {
 
     from {
+
         opacity: 0;
+
         transform: translateY(15px);
     }
 
     to {
+
         opacity: 1;
+
         transform: translateY(0);
     }
 }
 
 
-/* =====================================================
+/* =========================
    MUSIC INDICATOR
-===================================================== */
+========================= */
 
-.music-playing {
+#musicStatus {
+
     position: fixed;
+
     right: 18px;
+
     bottom: 18px;
+
     background: rgba(141,63,85,0.95);
+
     color: white;
-    padding: 10px 16px;
+
+    padding: 10px 17px;
+
     border-radius: 25px;
+
     font-size: 13px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.2);
+
     z-index: 20;
+
+    display: none;
 }
 
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 @media (max-width: 600px) {
 
     #letterPage {
+
         padding: 10px 8px 35px;
     }
 
     .letter {
+
         padding: 30px 22px 45px;
+
         font-size: 16px;
+
         line-height: 1.75;
     }
 
-    .opening h2 {
+    .letter-opening h2 {
+
         font-size: 26px;
     }
 
     .ending .big {
+
         font-size: 24px;
     }
 
     .ending .small {
+
         font-size: 16px;
     }
 
     .top-bar span {
+
         margin-right: 14px;
     }
 
     .opening-card {
+
         padding: 45px 25px;
     }
 
     .opening-card h1 {
+
         font-size: 29px;
+    }
+
+    .opening-card p {
+
+        font-size: 16px;
     }
 
 }
@@ -365,24 +514,28 @@ body {
 <body>
 
 
-<!-- =====================================================
+<!-- =========================
      FALLING HEART CONTAINER
-===================================================== -->
+========================= -->
 
-<div class="hearts"></div>
+<div id="heartContainer"></div>
 
 
-<!-- =====================================================
+<!-- =========================
      OPENING SCREEN
-===================================================== -->
+========================= -->
 
 <div id="opening">
 
     <div class="opening-card">
 
-        <div class="heart">❤️</div>
+        <div class="opening-heart">
+            ❤️
+        </div>
 
-        <h1>For You, Susma</h1>
+        <h1>
+            For You, Susma
+        </h1>
 
         <p>
             I wrote something for you...
@@ -390,7 +543,10 @@ body {
             Please open it when you're ready. ❤️
         </p>
 
-        <button class="open-button" onclick="openLetter()">
+        <button
+            class="open-button"
+            onclick="openLetter()"
+        >
             Open Your Letter ❤️
         </button>
 
@@ -399,21 +555,34 @@ body {
 </div>
 
 
-<!-- =====================================================
+
+<!-- =========================
      LETTER
-===================================================== -->
+========================= -->
 
 <div id="letterPage">
 
     <div class="notepad fade">
 
+
+        <!-- NOTEPAD MENU -->
+
         <div class="top-bar">
+
             <span>File</span>
+
             <span>Edit</span>
+
             <span>Format</span>
+
             <span>View</span>
+
             <span>Help</span>
+
         </div>
+
+
+        <!-- TITLE -->
 
         <div class="title-bar">
 
@@ -421,17 +590,24 @@ body {
                 Susma - Birthday Letter ❤️
             </div>
 
-            <div>❤️</div>
+            <div>
+                ❤️
+            </div>
 
         </div>
 
 
+
+        <!-- LETTER CONTENT -->
+
         <div class="letter">
 
 
-            <div class="opening">
+            <div class="letter-opening">
 
-                <h2>Happy Birthday, Susma ❤️</h2>
+                <h2>
+                    Happy Birthday, Susma ❤️
+                </h2>
 
                 <p>
                     A little letter from my heart to yours.
@@ -444,11 +620,13 @@ body {
                 Happy Birthday to my dearest and loveliest Susma, my love. ❤️
             </p>
 
+
             <p>
                 I don't even know where to begin, because whenever I think about us,
                 so many memories come rushing back to me that I don't know which one
                 to write first.
             </p>
+
 
             <p>
                 Somewhere along the way, I started liking you. The warmth, closeness,
@@ -458,6 +636,7 @@ body {
                 became the earth, constantly revolving around you. 🌍☀️❤️
             </p>
 
+
             <p>
                 Everything was going so beautifully. I still remember our first kiss.
                 How you rejected me at first, and then, somehow, we kissed. I can still
@@ -465,6 +644,7 @@ body {
                 entire body at that moment. It is one of those memories that I don't
                 think I will ever forget. ❤️
             </p>
+
 
             <p>
                 And then our dance... Maybe it was the first time I had ever danced
@@ -475,6 +655,7 @@ body {
                 a little more.
             </p>
 
+
             <p>
                 Then there were those nights when we cried together. Your scolds,
                 your efforts, the way you cared for me, the little things you did for
@@ -482,6 +663,7 @@ body {
                 revolve around you even more. I was barely able to focus on anything
                 else because somehow, my mind always came back to you. ❤️
             </p>
+
 
             <p>
                 Then you went for your internship, and suddenly I started wondering,
@@ -506,9 +688,11 @@ body {
                 someone I didn't want to lose.
             </p>
 
+
             <p>
                 And then came that last day.
             </p>
+
 
             <p>
                 I don't even know how much I cried that night. I couldn't even
@@ -516,6 +700,7 @@ body {
                 so badly. That night felt like pins were piercing through my heart
                 again and again. 💔
             </p>
+
 
             <p>
                 And then, the next day, when you hugged me, cried and said that we
@@ -534,6 +719,7 @@ body {
                 It was so painful that I wouldn't wish that kind of pain upon anyone. 💔
             </p>
 
+
             <p>
                 Still, when I went home, one thought kept coming back to me:
             </p>
@@ -548,9 +734,11 @@ body {
                 That's why I chose to stay with you.
             </p>
 
+
             <p>
                 And honestly, these two years have been some of the best days of my life. ❤️
             </p>
+
 
             <p>
                 I travelled by airplane for the first time for my loved one—for you.
@@ -559,9 +747,11 @@ body {
                 every argument, every hug... somehow became a part of my life.
             </p>
 
+
             <p>
                 And I have always been proud of you.
             </p>
+
 
             <p>
                 I can proudly stand in front of anyone and say that my girlfriend
@@ -570,13 +760,16 @@ body {
                 that the person I love is strong, independent and capable. ❤️
             </p>
 
+
             <p>
                 But maybe happiness doesn't come alone.
             </p>
 
+
             <p>
                 Sometimes, along with happiness, sorrow comes too.
             </p>
+
 
             <p>
                 And I know that recently, so many things have happened between us.
@@ -585,9 +778,11 @@ body {
                 intentionally and sometimes without even realising it.
             </p>
 
+
             <p>
                 For everything I have done that has hurt you, I am genuinely sorry. ❤️
             </p>
+
 
             <p>
                 Right now, I don't want more arguments. I don't want more negativity
@@ -595,9 +790,11 @@ body {
                 calm down, understand each other and, most importantly, start fresh.
             </p>
 
+
             <p>
                 I want us to become the way we were earlier.
             </p>
+
 
             <p>
                 The two people who could laugh at the smallest things.<br>
@@ -606,20 +803,24 @@ body {
                 The two people who could be happy simply because they had each other. ❤️
             </p>
 
+
             <p>
                 Maybe after this break, some of these things won't happen anymore.
                 Maybe we'll understand each other better. Maybe we'll learn how to
                 love each other without hurting each other.
             </p>
 
+
             <p>
                 I don't know exactly what the future holds for us.
             </p>
+
 
             <p>
                 But I know that these two years with you have meant more to me than
                 I can ever properly put into words.
             </p>
+
 
             <p>
                 I've ordered a few small gifts for you. They aren't anything expensive
@@ -628,37 +829,45 @@ body {
                 that someone was thinking about you while choosing them. ❤️🎁
             </p>
 
+
             <p>
                 Today is your birthday, and more than anything else, I want you to
                 be happy.
             </p>
+
 
             <p>
                 I want you to achieve everything you dream about. I want to see you
                 succeed, grow, smile and live the life you deserve.
             </p>
 
+
             <p>
                 And somewhere in between all these wishes, I have one small wish for
                 us too...
             </p>
 
+
             <p>
                 I hope you can forgive me.
             </p>
+
 
             <p>
                 I hope we can leave behind some of the pain we've caused each other.
             </p>
 
+
             <p>
                 I hope we can start again.
             </p>
+
 
             <p>
                 I pray that you get into Qualcomm and achieve everything you've
                 worked so hard for. ❤️
             </p>
+
 
             <p>
                 And I hope that someday, somehow, we can be together again—roaming
@@ -667,10 +876,12 @@ body {
                 making silly memories and just being happy because we had each other. 🥹❤️
             </p>
 
+
             <p>
                 Maybe that's all I want—to see you achieve your dreams and, at the
                 same time, have us find our way back to the happiness we once had.
             </p>
+
 
             <p>
                 And I hope, someday, when we look back at these difficult days,
@@ -678,73 +889,108 @@ body {
             </p>
 
 
-            <!-- =====================================================
+
+            <!-- =========================
                  ENDING
-            ===================================================== -->
+            ========================= -->
 
             <div class="ending">
+
 
                 <div class="big">
                     Happy Birthday, my dearest and loveliest Susma. ❤️🎂
                 </div>
 
+
                 <div class="small">
+
                     Thank you for coming into my life.<br>
+
                     Thank you for all the love and care.<br>
+
                     Thank you for every laugh.<br>
+
                     Thank you for every hug.<br>
+
                     Thank you for every tear.<br>
+
                     Thank you for every effort.<br>
+
                     Thank you for staying with me through all these years.
+
                 </div>
+
 
                 <br>
 
+
                 <div class="small">
+
                     Maybe I don't always know how to express what I feel,
                     and maybe I've made mistakes along the way.
+
                 </div>
 
+
                 <br>
+
 
                 <div class="big">
                     But one thing I know for sure...
                 </div>
 
+
                 <div class="small">
                     I have loved you deeply. ❤️
                 </div>
 
+
                 <br>
+
 
                 <div class="small">
+
                     And I will always be grateful for the beautiful memories
                     we've created together.
+
                 </div>
 
+
                 <br>
+
 
                 <div class="big">
                     Happy Birthday, my love. ❤️
                 </div>
 
+
                 <div class="small">
+
                     May this year bring you happiness, success, peace and
                     everything your heart wishes for.
+
                 </div>
 
+
                 <br>
+
 
                 <div class="big">
                     May you forgive me. ❤️
                 </div>
 
+
                 <br>
 
+
                 <div class="small">
+
                     Happy Birthday, Susma.<br>
+
                     My dearest. My loveliest. My love. 🫶🏻❤️
+
                 </div>
+
 
             </div>
 
@@ -755,26 +1001,38 @@ body {
 </div>
 
 
-<!-- =====================================================
-     MUSIC
-===================================================== -->
 
-<audio id="birthdayMusic" loop preload="auto">
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio
+    id="birthdayMusic"
+    loop
+    preload="auto"
+>
+
     <source
         src="https://drive.google.com/uc?export=download&id=12DVAZ3wJnuHzKjZw-4yVpjRYskPP_fkD"
-        type="audio/mpeg">
+        type="audio/mpeg"
+    >
+
 </audio>
 
 
-<!-- MUSIC STATUS -->
+<!-- =========================
+     MUSIC STATUS
+========================= -->
 
-<div id="musicStatus" class="music-playing" style="display:none;">
+<div id="musicStatus">
+
     🎵 Playing for you ❤️
+
 </div>
 
 
-<script>
 
+<script>
 
 /* =====================================================
    OPEN LETTER
@@ -805,7 +1063,7 @@ function openLetter() {
     letterPage.style.display = "block";
 
 
-    /* Start music */
+    /* Start music from the SAME click */
 
     music.play()
         .then(function() {
@@ -813,9 +1071,9 @@ function openLetter() {
             musicStatus.style.display = "block";
 
         })
-        .catch(function() {
+        .catch(function(error) {
 
-            musicStatus.style.display = "none";
+            console.log("Music could not start:", error);
 
         });
 
@@ -825,7 +1083,7 @@ function openLetter() {
     startFallingHearts();
 
 
-    /* Start at top */
+    /* Scroll to top */
 
     window.scrollTo({
         top: 0,
@@ -835,36 +1093,70 @@ function openLetter() {
 }
 
 
+
 /* =====================================================
-   FALLING HEART GENERATOR
+   CREATE ONE FALLING HEART
 ===================================================== */
 
 function createHeart() {
 
     const container =
-        document.querySelector(".hearts");
+        document.getElementById("heartContainer");
+
 
     const heart =
         document.createElement("div");
 
 
-    heart.classList.add("heart-fall");
+    heart.className =
+        "falling-heart";
 
 
     /* Different heart shapes */
 
-    const hearts = [
+    const heartShapes = [
         "♥",
         "❤",
-        "💕",
+        "♥",
+        "❤",
         "♡"
     ];
 
+
     heart.innerHTML =
-        hearts[Math.floor(Math.random() * hearts.length)];
+        heartShapes[
+            Math.floor(
+                Math.random() *
+                heartShapes.length
+            )
+        ];
 
 
-    /* Random horizontal position */
+    /* Pink shades */
+
+    const pinkColors = [
+
+        "#ff69b4",
+        "#ff85c1",
+        "#ff5c9a",
+        "#f783ac",
+        "#ff99cc",
+        "#ffb3d9",
+        "#ff4f9a"
+
+    ];
+
+
+    heart.style.color =
+        pinkColors[
+            Math.floor(
+                Math.random() *
+                pinkColors.length
+            )
+        ];
+
+
+    /* Horizontal position */
 
     heart.style.left =
         Math.random() * 100 + "vw";
@@ -873,41 +1165,22 @@ function createHeart() {
     /* Random size */
 
     heart.style.fontSize =
-        (12 + Math.random() * 18) + "px";
-
-
-    /* Random pink shade */
-
-    const pinks = [
-        "#ff69b4",
-        "#ff85c1",
-        "#ff9acb",
-        "#ff5c9a",
-        "#f783ac",
-        "#ffb3d9"
-    ];
-
-    heart.style.color =
-        pinks[Math.floor(Math.random() * pinks.length)];
+        (14 + Math.random() * 22) + "px";
 
 
     /* Random falling speed */
 
     heart.style.animationDuration =
-        (6 + Math.random() * 7) + "s";
+        (5 + Math.random() * 6) + "s";
 
 
-    /* Random delay */
+    /* Random starting delay */
 
     heart.style.animationDelay =
-        (Math.random() * 1.5) + "s";
+        (Math.random() * 0.8) + "s";
 
 
-    /* Slight horizontal variation */
-
-    heart.style.marginLeft =
-        (Math.random() * 30 - 15) + "px";
-
+    /* Add to page */
 
     container.appendChild(heart);
 
@@ -918,42 +1191,59 @@ function createHeart() {
 
         heart.remove();
 
-    }, 15000);
+    }, 13000);
 
 }
 
 
+
 /* =====================================================
-   START HEARTS
+   START FALLING HEARTS
 ===================================================== */
 
 let heartInterval = null;
 
+
 function startFallingHearts() {
 
+
+    /* Don't start twice */
+
     if (heartInterval !== null) {
+
         return;
+
     }
 
 
-    /* Create a few hearts immediately */
+    /* Create hearts immediately */
 
-    for (let i = 0; i < 12; i++) {
-        setTimeout(function() {
-            createHeart();
-        }, i * 250);
+    for (
+        let i = 0;
+        i < 25;
+        i++
+    ) {
+
+        setTimeout(
+            createHeart,
+            i * 120
+        );
+
     }
 
 
-    /* Continue creating hearts */
+    /* Continue falling */
 
     heartInterval =
-        setInterval(createHeart, 650);
+        setInterval(
+            createHeart,
+            450
+        );
 
 }
 
-
 </script>
+
 
 </body>
 </html>
